@@ -1,7 +1,6 @@
 # Problem 10 : Find the sum of all the primes below two million.
 ## Runs really slowly, though
 
-$primes
 
 def prime(n)
 	for i in $primes do
@@ -13,7 +12,7 @@ def prime(n)
 	return true
 end
 
-primes = [2]
+$primes = [2]
 t = 2
 
 for i in 3...2000000 do
