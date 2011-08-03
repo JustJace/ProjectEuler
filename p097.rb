@@ -10,4 +10,4 @@ end
 p *= 28433
 p += 1
 
-puts p.to_s.slice((p.to_s.length - 10)..(p.to_s.length))
+puts p.to_s[-10..-1]

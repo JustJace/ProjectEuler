@@ -45,10 +45,13 @@ max = 1
 while true do
 	tri += n
 	n += 1
+	if tri%100 != 0
+		next
+	end
 	f = div(tri)
 	if f > max
 		max = f
-		puts max
+		puts "#{tri} #{max}"
 	end
 	if(f > 500)
 		break

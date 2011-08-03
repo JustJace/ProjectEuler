@@ -5,7 +5,7 @@ x = 1
 
 for i in 1..500
 	for j in 1..4
-		x += (2*i)
+		x += 2 * i
 		t += x
 	end
 end

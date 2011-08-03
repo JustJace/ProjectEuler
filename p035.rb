@@ -13,23 +13,23 @@ def rot(n)
 	return s.join
 end
 
-$primes = Array.new
+$primes = [2,3]
+
+def prime? n
+	for p in $primes
+		if n % p == 0
+			return false
+		end
+	end
+	return true
+end
 
 def genPrimes()
 
-	$primes.push(2)
 	puts "Generating primes..."
-	for n in (3..1000000).step(2)
-		prime = true
-		for p in $primes
-			if(n % p == 0)
-				prime = false
-				break
-			end
-		end
-		if(prime)
-			$primes.push(n)
-		end
+	for n in (6..1000000).step(6)
+		$primes << n+1 if prime? n+1
+		$primes << n-1 if prime? n-1
 	end
 
 	puts "Finished generating primes"

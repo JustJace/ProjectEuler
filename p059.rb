@@ -30,4 +30,3 @@ for a in 97..122
 		end
 	end
 end
-
