@@ -31,9 +31,9 @@ best = 0
 bestA = 0
 bestB = 0
 
-for a in -999..999
-	for b in -999..999
-		next unless $primes.include? b
+for b in -999..999
+	next unless $primes.include? b
+	for a in -999..999
 		consecutive = 0
 		for n in 0..$NLIMIT
 			if $primes.include? Q a,b,n

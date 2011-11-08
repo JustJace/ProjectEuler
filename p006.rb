@@ -2,16 +2,13 @@
 
 #(1+..100)^2 - 1^2+..100^2
 
-t = 0
+total = 0
 
-for i in 1..100
-	for j in 1..100
-		if(i == j)
-			next
-		end
+(1..100).each { |i|
+	(1..100).each { |j|
+		next if i == j
+		total += i * j
+	}
+}
 
-		t += i * j
-	end
-end
-
-puts t
+puts total

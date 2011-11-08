@@ -1,6 +1,6 @@
 # Problem 2 : Sum of fibonacci numbers under 4M that are even
 
-t = 0
+total = 0
 
 a = 1
 b = 1
@@ -11,9 +11,9 @@ while c < 4000000 do
 	a = b
 	b = c
 	if (c % 2 == 0)
-		t += c
+		total += c
 	end
 	
 end
 
-print t
+print total
