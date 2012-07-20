@@ -11,7 +11,7 @@
 
 class Array
 	def sum
-		inject {|sum, x| sum + x}
+		inject(:+)
 	end
 end
 
@@ -21,17 +21,16 @@ end
 def RecAddCoin bag, coin
 
 	bag.push coin
-	bag.sort!
-	if (bag.sum > 200)
+
+	return if (bag.sum > 200)
+
+	if bag.sum == 200
+		bag.sort!
+		@solutions.push bag if !@solutions.include? bag
 		return
-	elsif bag.sum == 200
-		if !@solutions.include? bag
-			@solutions.push bag
-			print "|"
-		end
-	else
-		@coins.each{|coin| RecAddCoin(bag.clone, coin)}
 	end
+	
+	@coins.each{|coin| RecAddCoin(bag.clone, coin)}
 end
 
 RecAddCoin([], 0)
