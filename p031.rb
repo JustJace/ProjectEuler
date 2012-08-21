@@ -20,7 +20,7 @@ end
 def RecAddCoin coin, bag = []
 
 	bag << coin
-	@count += 1 if (bag.Sum == 200)
+	@count += 1 if bag.Sum == 200
 	@coins.each{|c| RecAddCoin c, bag.clone if bag.Sum + c <= 200 and c <= coin}
 end
 
