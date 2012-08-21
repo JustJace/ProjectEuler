@@ -8,30 +8,24 @@
 #	1£1 + 150p + 220p + 15p + 12p + 31p
 #	How many different ways can £2 be made using any number of coins?
 
-
 class Array
-	def sum
-		inject(:+)
+	def Sum
+		self.inject(:+)
 	end
 end
 
-@coins = [1,2,5,10,20,50,100,200]
-@solutions = []
+@count = 0
+@coins = [200,100,50,20,10,5,2,1]
 
-def RecAddCoin bag, coin
+def RecAddCoin coin, bag = []
 
-	bag.push coin
-
-	return if (bag.sum > 200)
-
-	if bag.sum == 200
-		bag.sort!
-		@solutions.push bag if !@solutions.include? bag
-		return
-	end
-	
-	@coins.each{|coin| RecAddCoin(bag.clone, coin)}
+	bag << coin
+	@count += 1 if (bag.Sum == 200)
+	@coins.each{|c| RecAddCoin c, bag.clone if bag.Sum + c <= 200 and c <= coin}
 end
 
-RecAddCoin([], 0)
-puts @solutions.count
+for coin in @coins
+	RecAddCoin coin
+end
+
+p @count
