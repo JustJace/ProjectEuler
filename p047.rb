@@ -1,24 +1,47 @@
-# Problem 41
+# Problem 47
 
-#	We shall say that an n-digit number is pandigital if it
-#	makes use of all the digits 1 to n exactly once.
-#	For example, 2143 is a 4-digit pandigital and is also prime.
+#	The first two consecutive numbers to have two distinct
+#	prime factors are:
 
-#	What is the largest n-digit pandigital prime that exists?
+#	14 = 2 x 7
+#	15 = 3 x 5
 
-def prime? n
-        return false if n < 2
-        return true if n == 2 or n == 3
-        (2..(n ** 0.5)).each{|x| return false if n % x == 0}
-        return true
-end
+#	The first three consecutive numbers to have three distinct
+#	prime factors are:
 
-def solve i
-	puts "Solving for " + i.join
-	while i.size > 0
-		i.permutation.map{|p| p.join.to_i}.each{|p| return p if prime? p}
+#	644 = 2² x 7 x 23
+#	645 = 3 x 5 x 43
+#	646 = 2 x 17 x 19.
+
+#	Find the first four consecutive integers to have four distinct
+#	primes factors. What is the first of these numbers?
+
+require 'Prime'
+
+def f(n)
+	x = []
+	while n != 1
+		for p in Prime.each(n)
+			if n % p == 0
+				n /= p
+				x << p
+				break
+			end
+		end
 	end
-	i.slice! 0
+	return x.uniq.size != 4
 end
 
-puts solve [9, 8, 7, 6, 5, 4, 3, 2, 1]
+def solve
+
+	n = 2*3*5*7
+	while true
+		next if f(n+=1)
+		next if f(n+=1)
+		next if f(n+=1)
+		next if f(n+=1)
+		return n - 3
+	end
+end
+
+p solve
