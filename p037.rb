@@ -9,14 +9,10 @@
 
 #	NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 
-$primes = [2,3]
-
 def prime? n
-	return false if n <= 1
-	return true if $primes.include? n
-	$primes.each {|p| return false if n % p == 0}
-	$primes << n
-	printf "New Prime: %s\n", n
+	return false if n < 2
+	return true if n == 2 or n == 3
+	(2..(n ** 0.5)).each{|x| return false if n % x == 0}
 	return true
 end
 
