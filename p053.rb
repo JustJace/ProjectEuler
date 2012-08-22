@@ -24,7 +24,7 @@ class Fixnum
 end
 
 def nCr n, r
-	!n / !r * !(n * r)
+	!n / !r / !(n - r)
 end
 
 count = 0
