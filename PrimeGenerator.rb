@@ -19,4 +19,15 @@ class PrimeGenerator
 		return $primes
 	end
 
+	def self.generateUpTo limit
+		n = 6
+		while n < limit
+			$primes << n+1 if prime? n+1
+			$primes << n-1 if prime? n-1
+			n+=6
+		end
+
+		return $primes
+	end
+
 end
